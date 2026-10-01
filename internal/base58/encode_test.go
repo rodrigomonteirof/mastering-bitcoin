@@ -30,7 +30,6 @@ func TestEncode(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-
 			input, err := hex.DecodeString(tt.inHex)
 			if err != nil {
 				t.Fatal(err)
@@ -40,7 +39,6 @@ func TestEncode(t *testing.T) {
 			if got != tt.want {
 				t.Errorf("Encode(%s) = %q, want %q", tt.inHex, got, tt.want)
 			}
-
 		})
 	}
 }
