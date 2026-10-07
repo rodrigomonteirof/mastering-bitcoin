@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/hex"
+	"math/big"
 )
 
 const maxKey = "fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364140"
@@ -21,6 +22,18 @@ func NewPrivateKey() PrivateKey {
 			return k
 		}
 	}
+}
+
+func (p PrivateKey) Decimal() *big.Int {
+	d := new(big.Int)
+
+	d.SetBytes(p.Value[:])
+
+	return d
+}
+
+func (p PrivateKey) Hex() string {
+	return hex.EncodeToString(p.Value[:])
 }
 
 func IsValid(b [32]byte) bool {

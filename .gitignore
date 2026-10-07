@@ -33,3 +33,6 @@ go.work.sum
 
 # Local scratch notes, never committed
 tmp/
+
+.clj-kondo/
+.lsp/
