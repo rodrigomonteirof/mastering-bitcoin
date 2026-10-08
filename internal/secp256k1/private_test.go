@@ -39,7 +39,9 @@ func TestIsValid(t *testing.T) {
 				t.Fatalf("inHex has %d bytes, want 32", len(decoded))
 			}
 
-			got := secp256k1.IsValid([32]byte(decoded))
+			in := keyFromHex(t, tt.inHex)
+
+			got := secp256k1.IsValid(in)
 			if got != tt.want {
 				t.Errorf("IsValid(%s) = got %v, want %v", tt.inHex, got, tt.want)
 			}
